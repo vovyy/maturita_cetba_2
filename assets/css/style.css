@@ -1,0 +1,30 @@
+.body
+{
+    background-color: lightsalmon;
+
+}
+
+h1
+{
+    text-align:center;
+    color: black;
+    font-family:'Times New Roman';
+}
+h2{
+
+    text-justify: auto;
+
+}
+.nadpis
+{
+color: black;
+font-family:'Times New Roman';
+
+}
+
+.podnadpis
+{
+color: maroon;
+
+}
+
