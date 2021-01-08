@@ -17,25 +17,37 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <?php foreach($polozky as $item): ?>
-      <li class="nav-item"> 
+      <li class="nav-item">
       <a href="<?php echo site_url(); ?><?php echo $item->url; ?>" class="nav-link"><?php echo $item->polozka_menu; ?></a>
       </li>
       <?php endforeach; ?>
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </li>-->
+      <?php if (!$this->ion_auth->logged_in()): ?>
+      <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url("auth/login")?>">Login</a>
+      </li>
+      <?php endif ?>
+      <?php if ($this->ion_auth->logged_in()): ?>
+      <li class="nav-item"></li>
+      <a class="nav-link" href="<?php echo base_url("auth/logout")?>">Log out</a>
+      </li>
+      <li class="nav-item"></li>
+      <a class="nav-link" href="<?php echo base_url("addbook")?>">Přidej knihu</a>
+      </li>
+      <?php endif ?>
     </ul>
     <!--<form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>-->
+
+
+  
+<!--  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+  </form> -->
+</div>
+</nav>
   </div>
 </nav>
 </head>
