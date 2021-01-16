@@ -91,4 +91,35 @@ class Pages extends CI_Controller {
      $this->load->view('pages/'.$page, $data);
      $this->load->view('templates/footer');
     }
+    public function addbook()
+    {
+      $page = "addbook";
+      $data['polozky'] = $this->Cetba_model->get_menu_polozky();
+
+      $this->load->view('templates/header',$data);
+      $this->load->view('pages/'.$page, $data);
+      $this->load->view('templates/footer');
+
+
+    }
+    public function pridat_knihu()
+    {
+
+    $result = $this->Cetba_model->insert();
+    redirect(base_url());
+  if ($result == 1) {
+      echo "<h1><center>Úkol byl přidán</center></h1> ";
+      ?>
+      <button><a href="<?= base_url() ?>">Zpět na hlavní stránku</a></button>
+      <?php
+
+    }
+    else
+    {
+      echo "Error!";
+    }
+
 }
+
+
+    }

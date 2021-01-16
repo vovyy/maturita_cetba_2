@@ -5,7 +5,7 @@ class Cetba_model extends CI_Model {
       parent::__construct();
 
     $this->load->database();
-    
+
   }
   //knihy model
   protected $table = 'knihy';
@@ -57,6 +57,36 @@ class Cetba_model extends CI_Model {
       $result = $this->db->get()->result();
       return $result;
   }
+  public function insert(){
+      $this->load->database();
+      $data = array(
 
+          "nazev_knihy" => $this->input->post('nazev_knihy'),
+          "autor" => $this->input->post('autor'),
+          "anotace" => $this->input->post('anotace'),
+          "kategorie_id_kategorie" => $this->input->post('kategorie_id_kategorie')
+  );
 
+  if ($this->db->insert('knihy', $data))
+  {
+    return true;
+  }
+  else {
+    return false;
+  }
+  }
+  protected $tableb = "knihy";
+
+  public function get_ukoly()
+  {
+      $this->db->select('id, popis, konec, splněno');
+  	  $this->db->from('form');
+  		//$this->db->where('nakladatel.id', $id);
+          $this->db->order_by('id', 'ASC');
+         // $this->db->join('kniha', 'nakladatel.id = kniha.nakladatel');
+          $resultset = $this->db->get();
+          $result =  $resultset->result();
+
+          return $result;
+  }
 }

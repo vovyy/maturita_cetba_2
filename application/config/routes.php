@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/view';
 $route['knihy'] = 'pages/view_b';
 $route["kniha/(:num)"] = "pages/view_knihy/$1";
+$route["addbook"] = "pages/addbook";
+$route["pridat_knihu"] = "pages/pridat_knihu";
 $route['autori'] = 'pages/view_a';
 $route["autor/(:num)"] = "pages/view_autori/$1";
 $route['404_override'] = '';
